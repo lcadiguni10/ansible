@@ -1,0 +1,31 @@
+---
+- name: Instalar e configurar software em servidores Windows
+  hosts: windows
+  tasks:
+    - name: Garantir que a pasta C:\temp exista
+      win_file:
+        path: C:\temp
+        state: directory
+
+    - name: Copiar o arquivo MSI para o servidor
+      win_copy:
+        src: /home/ronaldo/TI/Softwares/checkmk/check_mk_agent.msi
+        dest: C:\temp\
+
+    - name: Instalar o MSI
+      win_package:
+        path: 'C:\temp\check_mk_agent.msi'
+        state: present
+        wait_for_children: yes
+
+    - name: Copiar o arquivo PowerShell para o servidor
+      win_copy:
+        src: /home/ronaldo/TI/Softwares/checkmk/veeam_backup_status.ps1
+        dest: C:\Program Files (x86)\checkmk\service\plugins\
+
+    - name: Remover os arquivos temporários após as instalações
+      win_file:
+        path: "{{ item }}"
+        state: absent
+      loop:
+        - C:\temp\check_mk_agent.msi

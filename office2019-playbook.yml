@@ -1,0 +1,38 @@
+---
+- name: Instalação Office 2019 de .exe com .xml
+  hosts: windows
+  gather_facts: yes
+  tasks:
+    - name: Copiar o arquivo .exe para o Windows
+      ansible.windows.win_copy:
+        src: /home/ronaldo/TI/Softwares/Office/setup.exe
+        dest: C:\temp\setup.exe
+
+    - name: Copiar o arquivo .xml para o Windows
+      ansible.windows.win_copy:
+        src: /home/ronaldo/TI/Softwares/Office/configuration-Office2019Enterprise.xml
+        dest: C:\temp\configuration-Office2019Enterprise.xml
+        
+    - name: Copiar o pacote de linguagem para o Windows
+      ansible.windows.win_copy:
+        src: /home/ronaldo/TI/Softwares/Office/OfficeSetup.exe
+        dest: C:\temp\OfficeSetup.exe
+
+    - name: Copiar script
+      ansible.windows.win_copy:
+        src: /home/ronaldo/TI/Softwares/Office/office2019-script.ps1
+        dest: C:\temp\office2019-script.ps1
+
+    - name: Executar o script
+      win_shell:  |
+        powershell.exe -ExecutionPolicy Bypass -File C:\temp\office2019-script.ps1
+
+    - name: Remover os arquivos temporários após as instalações
+      win_file:
+        path: "{{ item }}"
+        state: absent
+      loop:
+        - C:\temp\configuration-Office2019Enterprise.xml
+        - C:\temp\setup.exe
+        - C:\temp\OfficeSetup.exe
+        - C:\temp\office2019-script.ps1

@@ -1,0 +1,6 @@
+- name: Reiniciar a máquina
+  hosts: linux_machines
+  become: yes  # Necessário para permissões de superusuário
+  tasks:
+    - name: Reiniciar o sistema
+      command: /sbin/reboot
