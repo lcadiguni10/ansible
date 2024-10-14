@@ -1,8 +1,0 @@
----
-- name: Instalar Office365
-  hosts: windows
-  tasks:
-    - name: Instalar Office365
-      win_chocolatey:
-        name: office365business
-        state: present

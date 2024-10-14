@@ -1,9 +1,0 @@
----
-- name: Instalar TeamViewer15
-  hosts: windows
-  gather_facts: yes
-  tasks:
-    - name: Instalar TeamViewer15
-      win_chocolatey:
-        name: teamviewer
-        state: present

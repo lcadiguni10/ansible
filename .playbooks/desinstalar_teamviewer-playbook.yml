@@ -1,9 +1,0 @@
----
-- name: Desinstalar o TeamViewer no Windows
-  hosts: windows
-  gather_facts: yes
-  tasks:
-    - name: Encontrar o TeamViewer para desinstalar
-      win_package:
-        name: TeamViewer
-        state: absent

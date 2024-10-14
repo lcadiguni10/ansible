@@ -1,8 +1,0 @@
----
-- name: Reiniciar o serviço OCS em máquinas Windows
-  hosts: windows
-  tasks:
-    - name: reiniciar o serviço OCS
-      win_service:
-        name: "OCS Inventory Service"
-        state: restarted

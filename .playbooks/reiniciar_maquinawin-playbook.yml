@@ -1,6 +1,0 @@
-- name: Reiniciar a máquina Windows
-  hosts: windows_machines
-  tasks:
-    - name: Reiniciar o sistema
-      win_reboot:
-        reboot_timeout: 600  # Tempo em segundos para aguardar a reinicialização
