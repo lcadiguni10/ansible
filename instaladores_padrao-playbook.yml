@@ -3,26 +3,26 @@
   hosts: windows
   tasks:
     - name: Install 7zip
-      chocolatey.chocolatey.win_chocolatey:
+      win_chocolatey:
         name: 7zip
         state: present
 
     - name: Install Notepad++
-      chocolatey.chocolatey.win_chocolatey:
+      win_chocolatey:
         name: notepadplusplus
         state: present
 
     - name: Install Opera GX
-      chocolatey.chocolatey.win_chocolatey:
+      win_chocolatey:
         name: opera-gx
         state: present
 
     - name: Install Google Chrome
-      chocolatey.chocolatey.win_chocolatey:
+      win_chocolatey:
         name: googlechrome
         state: present
         
     - name: Install Lightshoot
-      chocolatey.chocolatey.win_chocolatey:
+      win_chocolatey:
         name: lightshot
         state: present
