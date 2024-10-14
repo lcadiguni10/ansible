@@ -1,5 +1,11 @@
 - name: Testar conexão com Windows
   hosts: windows
+  vars:
+    ansible_connection: winrm
+    ansible_port: 5985  # ou 5985 para HTTP
+    ansible_user: eminem
+    ansible_password: zPxR%56h7Drmp
+    ansible_winrm_server_cert_validation: ignore  # se estiver usando HTTPS e o certificado não for válido
   tasks:
     - name: Verificar conectividade
       win_ping:
