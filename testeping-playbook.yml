@@ -1,0 +1,5 @@
+- name: Testar conexão com Windows
+  hosts: windows
+  tasks:
+    - name: Verificar conectividade
+      win_ping:
