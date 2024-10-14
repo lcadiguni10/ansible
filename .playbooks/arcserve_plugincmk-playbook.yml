@@ -1,0 +1,8 @@
+---
+- name: Instalar e configurar software em servidores Windows
+  hosts: windows
+  tasks:
+    - name: Copiar o arquivo IIS Pool State para o servidor
+      win_copy:
+        src: /home/ronaldo/TI/Softwares/checkmk/arcserve_backup.ps1
+        dest: C:\Program Files (x86)\checkmk\service\plugins
